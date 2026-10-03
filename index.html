@@ -1030,7 +1030,14 @@ body.molli-v2 { background:var(--paper); }
 /* Listen first: off-white, gray gradients, and quiet floating surfaces. */
 :root { --paper:#f7f6f2; --ink:#303332; --ink-soft:#686c69; --accent:#d4d8d5; --accent-deep:#353b37; --accent-soft:#e8ebe8; --accent-tint:#f1f2ef; --maxw:920px; }
 body.molli-v2 { background:radial-gradient(ellipse at 85% 15%,#dfe2df80,transparent 52%),linear-gradient(150deg,#faf9f5 5%,#eeefeb 60%,#f8f7f3); background-attachment:fixed; min-height:100vh; }
-.molli-v2 .topbar { max-width:920px; padding:28px 32px; }
+.molli-v2 .topbar {
+  position:sticky; top:0; z-index:30; max-width:none; width:100%; margin:0;
+  padding:calc(8px + env(safe-area-inset-top)) max(32px, calc((100% - 856px) / 2)) 8px;
+  background:linear-gradient(120deg,rgba(249,249,246,.76),rgba(223,226,223,.62));
+  border-bottom:1px solid #ffffff80; box-shadow:0 3px 16px #30333205;
+  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+}
+html { scroll-padding-top:calc(76px + env(safe-area-inset-top)); }
 .ag-brand { font-size:24px; gap:8px; }.ag-icon { background:transparent; width:28px; height:32px; font-size:22px; }
 .dashboard { max-width:920px; padding:16px 32px 40px; }
 .dashboard-hero { padding:24px 0 36px; background:none; border-radius:0; min-height:0; }
@@ -1066,7 +1073,7 @@ body.molli-v2 { background:radial-gradient(ellipse at 85% 15%,#dfe2df80,transpar
 .molli-v2 .note-deck-card.practicing { box-shadow:0 10px 30px #323b3510,inset 0 0 0 1px #98a792; }.molli-v2 .verse .verse-practice { background:#ffffff70; color:#5f6d60; width:38px; height:38px; }.molli-v2 .verse-practice[aria-pressed="true"] { background:#465249; color:white; }
 .molli-v2 .practice-bar { position:static; max-width:856px; width:calc(100% - 64px); padding:22px; background:#e3e6e0b3; border:1px solid #fff9; border-radius:20px; margin:0 auto 20px; }.molli-v2 .pr-hint { color:#60685e; }.molli-v2 .word-bank { background:#f1f2ed; }.molli-v2 .bank-label { background:#f1f2ed; }
 .dashboard-view .listening-player,.dashboard-view .listen-section-heading { display:none; }
-@media(max-width:600px) { .molli-v2 .topbar { padding:22px 20px; }.dashboard { padding:10px 20px 30px; }.note-grid { grid-template-columns:1fr; gap:16px; }.note-card { min-height:185px; }.editor-navigation,.listening-player,.listen-section-heading { width:calc(100% - 40px); margin-left:auto; margin-right:auto; }.listening-player { padding:24px; }.molli-v2 .listening-player .notes-read-all { width:100%; min-width:0; }.molli-v2 .subnav { padding:0 20px; }.molli-v2 .reader { padding:0 20px 24px; }.molli-v2 .note-deck-card { padding:20px; }.molli-v2 .note-deck-card .cell-text { font-size:18px; }.molli-v2 .practice-bar { width:calc(100% - 40px); }.device-label { font-size:10px; }.listen-section-heading { flex-wrap:wrap; }#editorLabel { font-size:9px; } }
+@media(max-width:600px) { .molli-v2 .topbar { padding:calc(6px + env(safe-area-inset-top)) 20px 6px; }.dashboard { padding:10px 20px 30px; }.note-grid { grid-template-columns:1fr; gap:16px; }.note-card { min-height:185px; }.editor-navigation,.listening-player,.listen-section-heading { width:calc(100% - 40px); margin-left:auto; margin-right:auto; }.listening-player { padding:24px; }.molli-v2 .listening-player .notes-read-all { width:100%; min-width:0; }.molli-v2 .subnav { padding:0 20px; }.molli-v2 .reader { padding:0 20px 24px; }.molli-v2 .note-deck-card { padding:20px; }.molli-v2 .note-deck-card .cell-text { font-size:18px; }.molli-v2 .practice-bar { width:calc(100% - 40px); }.device-label { font-size:10px; }.listen-section-heading { flex-wrap:wrap; }#editorLabel { font-size:9px; } }
 
 #noteEditor .notes-toolbar { display:flex; margin:14px 0; }
 .voice-tips { margin-top:14px; font-size:11px; color:#687069; }.voice-tips summary { cursor:pointer; }.molli-v2 .listening-player .voice-tips .voice-hint { margin-top:8px; }
@@ -1138,7 +1145,7 @@ body.molli-v2 { background:radial-gradient(ellipse at 85% 15%,#dfe2df80,transpar
 .vocab-button.primary:hover { background:#2e3e32; }
 .vocab-button:disabled { opacity:.55; cursor:default; }
 .vocab-button.text { background:none; border:0; padding-left:0; }
-.vocab-session { padding:25px 27px; border-radius:22px; background:#e4e9df; margin:22px 0 28px; }
+.vocab-session { padding:25px 27px; border-radius:22px; background:linear-gradient(135deg,#ffffffad,#d8dcd866); border:1px solid #ffffffc9; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); margin:22px 0 28px; }
 .vocab-session p:last-child { margin-bottom:0; }
 .vocab-games { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:15px; margin-top:17px; }
 .vocab-game,.vocab-card { background:linear-gradient(135deg,#ffffffad,#ffffff50); border:1px solid #ffffffdb; box-shadow:0 10px 30px #323b350b; border-radius:22px; padding:24px; }
@@ -1150,7 +1157,16 @@ body.molli-v2 { background:radial-gradient(ellipse at 85% 15%,#dfe2df80,transpar
 .vocab-list { margin-top:20px; }
 .vocab-list-item { padding:17px 0; border-bottom:1px solid #d8ddd4; }
 .vocab-list-item p { margin:6px 0 0; }
-.vocab-word { display:inline; color:inherit; font:inherit; background:none; border:0; border-radius:4px; padding:2px 1px; cursor:pointer; text-decoration:underline; text-decoration-color:#adb8a9; text-underline-offset:5px; }
+.vocab-word { display:inline-flex; align-items:center; gap:12px; max-width:100%; color:inherit; font:inherit; background:none; border:0; border-radius:4px; padding:2px 1px; cursor:pointer; text-decoration:underline; text-decoration-color:#adb8a9; text-underline-offset:5px; }
+.vocab-word span { overflow-wrap:anywhere; min-width:0; }
+.vocab-memory-icon { width:32px; height:32px; flex:none; color:#626865; vertical-align:middle; }
+.vocab-prompt { display:flex; align-items:center; gap:16px; }
+.vocab-prompt .vocab-memory-icon { width:44px; height:44px; }
+.vocab-cue-editor { display:flex; align-items:center; gap:16px; margin-top:18px; }
+.vocab-cue-editor>div { flex:1; min-width:0; }
+.vocab-cue-editor label { margin:0 0 7px; }
+.vocab-cue-editor select { width:100%; min-height:44px; padding:10px; border:1px solid #d0d5d1; border-radius:12px; background:#ffffff80; color:var(--ink); font:13px var(--font-ui); }
+.vocab-cue-editor .vocab-memory-icon { width:44px; height:44px; }
 .vocab-word:hover { background:#e4e9df; }
 .vocab-list-item .vocab-word { font-size:18px; font-weight:500; }
 .vocab-quiz { max-width:640px; margin:20px auto 0; }
@@ -1191,6 +1207,46 @@ body.molli-v2 { background:radial-gradient(ellipse at 85% 15%,#dfe2df80,transpar
   .vocab-card,.vocab-session { padding:22px; }
   .vocab-prompt { font-size:21px; }
 }
+
+</style>
+  <style>
+/* Math uses the same translucent gray decks as Notes. */
+.math-panel { max-width:920px; margin:auto; padding:28px 32px 42px; color:var(--ink); }
+.math-panel h1 { font:400 clamp(28px,4vw,38px)/1.2 var(--font-ui); letter-spacing:-1px; margin:0 0 12px; }
+.math-panel h2 { font:500 19px/1.4 var(--font-ui); margin:0 0 12px; }
+.math-panel p { line-height:1.65; }
+.math-header { display:flex; justify-content:space-between; gap:20px; align-items:center; flex-wrap:wrap; margin-bottom:26px; }
+.math-muted { color:#686c69; font-size:13px; margin:0 0 12px; }
+.math-deck { background:linear-gradient(135deg,#ffffffad,#ffffff40); border:1px solid #ffffffd9; box-shadow:0 10px 30px #323b3510,inset 0 1px 0 #fff9; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-radius:22px; padding:26px; }
+.math-start { display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-bottom:30px; }
+.math-start p { margin-bottom:0; }
+.math-settings { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:0 0 24px; }
+.math-settings label { font-size:13px; color:#686c69; }
+.math-settings select { font:13px var(--font-ui); color:var(--ink); background:#ffffff80; border:1px solid #d1d5d2; padding:10px 12px; border-radius:12px; min-height:44px; }
+.math-games { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.math-game { text-align:left; cursor:pointer; color:inherit; font:inherit; display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
+.math-game:hover { background:linear-gradient(135deg,#ffffffcc,#ffffff66); }
+.math-game strong { font-size:17px; font-weight:500; }.math-game span { font-size:13px; color:#686c69; line-height:1.6; }
+.math-icon { width:32px; height:32px; color:#636966; }
+.math-button { border:1px solid #cfd4d0; background:#ffffff80; border-radius:12px; min-height:44px; padding:11px 16px; color:var(--ink); font:500 13px var(--font-ui); cursor:pointer; }
+.math-button.primary { background:linear-gradient(135deg,#535956,#303633); color:#fff; border-color:transparent; }
+.math-button:disabled { cursor:default; opacity:.6; }
+.math-actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:18px; }
+.math-session { max-width:640px; margin:24px auto; }.math-session .eyebrow { margin:0; }
+.math-progress { display:block; width:100%; height:4px; margin:16px 0 24px; accent-color:#646b66; }
+.math-prompt { font-size:clamp(25px,5vw,36px); line-height:1.5; font-weight:400; letter-spacing:-.5px; margin:20px 0 26px; font-variant-numeric:tabular-nums; }
+.math-answer-label { display:block; font-size:13px; color:#686c69; margin-bottom:10px; }
+.math-answer { width:100%; padding:12px 14px; border:1px solid #cfd4d0; border-radius:12px; background:#ffffff90; color:var(--ink); font:20px var(--font-ui); }
+.math-estimate { width:100%; accent-color:#646b66; min-height:44px; }.math-estimate-value { display:block; text-align:center; font-size:28px; font-variant-numeric:tabular-nums; }
+.math-range { display:flex; justify-content:space-between; font-size:12px; color:#686c69; }
+.math-options { display:grid; gap:10px; }.math-options .math-button { text-align:left; }
+.math-feedback { margin-top:24px; padding-top:22px; border-top:1px solid #cfd4d0; }.math-feedback p { font-size:14px; }
+.math-hint { font-size:13px; color:#5a635e; margin:16px 0 0; }.math-error { color:#934329; font-size:13px; }
+.math-stats { display:flex; gap:24px; flex-wrap:wrap; margin:24px 0; }.math-stats strong { display:block; font-size:24px; font-weight:400; margin-bottom:5px; }.math-stats span { color:#686c69; font-size:12px; }
+.math-review { margin-top:16px; }.math-review article { padding:18px 0; border-bottom:1px solid #d5d9d6; }.math-review h2 { font-size:17px; }.math-review p { font-size:13px; }
+.math-panel :is(button,input,select):focus-visible { outline:2px solid #646b66; outline-offset:3px; }
+@media(max-width:600px) { .math-panel { padding:20px; }.math-games { grid-template-columns:1fr; gap:14px; }.math-deck { padding:22px; }.math-prompt { font-size:26px; } }
+@media(max-width:400px) { .ag-sections { gap:12px; }.ag-sections button { font-size:12px; }.ag-brand { font-size:21px; gap:5px; }.ag-icon { width:22px; font-size:18px; } }
 
 </style>
 <style>
@@ -1240,6 +1296,7 @@ body.molli-v2 { background:radial-gradient(ellipse at 85% 15%,#dfe2df80,transpar
     <nav class="ag-sections" aria-label="Your spaces">
       <button id="navNotes" type="button" aria-pressed="true">Notes</button>
       <button id="navVocabulary" type="button" aria-pressed="false">Vocabulary</button>
+      <button id="navMath" type="button" aria-pressed="false">Math</button>
     </nav>
     <div class="lang-switch" hidden>
       <button class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose a language to learn">
@@ -1260,6 +1317,7 @@ body.molli-v2 { background:radial-gradient(ellipse at 85% 15%,#dfe2df80,transpar
     <p class="dashboard-footnote">Your words. Your pace. <span>AG by Panthagani</span></p>
   </section>
   <section id="vocabularyPanel" class="vocabulary-panel" aria-label="Vocabulary practice" hidden></section>
+  <section id="mathPanel" class="math-panel" aria-label="Math practice" hidden></section>
   <div class="editor-navigation"><button id="backToNotes" class="back-button">← All notes</button><span id="editorLabel">LISTEN & LEARN</span></div>
   <section class="listening-player" aria-label="Listen to your note">
     <p class="eyebrow">LISTEN AT YOUR PACE <span aria-hidden="true">☁</span></p>
@@ -3412,8 +3470,10 @@ window.MOLLI_DATA = {
   function renderNotes() {
     stopSpeaking();
     if (window.AGVocabulary) window.AGVocabulary.hide();
+    if (window.AGMath) window.AGMath.hide();
     $("#navNotes").setAttribute("aria-pressed", "true");
     $("#navVocabulary").setAttribute("aria-pressed", "false");
+    $("#navMath").setAttribute("aria-pressed", "false");
     document.body.classList.remove("dashboard-view");
     $("#notesDashboard").hidden = true;
     $("#passageTitle").textContent = activeNote() ? (activeNote().title || noteTitle(activeNote().text)) : "A fresh page.";
@@ -3864,8 +3924,10 @@ window.MOLLI_DATA = {
   function openDashboard() {
     if (!confirmLeaveNote()) return;
     if (window.AGVocabulary) window.AGVocabulary.hide();
+    if (window.AGMath) window.AGMath.hide();
     $("#navNotes").setAttribute("aria-pressed", "true");
     $("#navVocabulary").setAttribute("aria-pressed", "false");
+    $("#navMath").setAttribute("aria-pressed", "false");
     stopSpeaking(); closePopover();
     verseControllers = []; activeBlank = null;
     $("#wordBank").hidden = true;
@@ -3910,8 +3972,10 @@ window.MOLLI_DATA = {
   window.AGNotes = {
     openWordPopover, closePopover, renderWords,
     notes: () => notes,
-    prepareVocabulary() {
+    prepareVocabulary(space = "vocabulary") {
       if (!confirmLeaveNote()) return false;
+      if (window.AGVocabulary) window.AGVocabulary.hide();
+      if (window.AGMath) window.AGMath.hide();
       closePopover(); stopSpeaking();
       verseControllers = []; activeBlank = null;
       $("#wordBank").hidden = true;
@@ -3920,7 +3984,8 @@ window.MOLLI_DATA = {
       document.body.classList.add("dashboard-view");
       $("#notesDashboard").hidden = true;
       $("#navNotes").setAttribute("aria-pressed", "false");
-      $("#navVocabulary").setAttribute("aria-pressed", "true");
+      $("#navVocabulary").setAttribute("aria-pressed", String(space === "vocabulary"));
+      $("#navMath").setAttribute("aria-pressed", String(space === "math"));
       return true;
     },
     activeNote: () => activeNote()
@@ -3943,6 +4008,52 @@ window.MOLLI_DATA = {
   const KEY = 'molli.vocabulary.v1';
   const esc = value => String(value || '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   const normalize = value => String(value || '').trim().toLocaleLowerCase('en').replace(/[’]/g, "'").replace(/\s+/g, ' ');
+  // Small, local SVG drawings: meaningful cues without image downloads.
+  const cues = {
+    target:['Target','<circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="6"/><path d="m16 16 10-10M21 6h5v5"/>','deliberate intentional planned purpose aim goal focus'],
+    sprout:['Sprout','<path d="M16 28V15C7 16 4 11 5 5c7 0 11 4 11 10m0 5c0-8 4-12 11-12 0 7-4 12-11 12M9 28h14"/>','resilient recover recovery grow growth plant seed adapt'],
+    lines:['Short lines','<path d="M5 8h22M5 16h14M5 24h7"/>','concise brief succinct short summary compress'],
+    check:['Checklist','<rect x="6" y="4" width="20" height="24" rx="3"/><path d="m10 11 2 2 4-4m-6 12 2 2 4-4m3-7h3m-3 10h3"/>','diligent hardworking effort task careful thorough order organize'],
+    shield:['Shield','<path d="m16 3 11 5v8c0 6-5 10-11 13C10 26 5 22 5 16V8Z"/><path d="m11 16 3 3 7-7"/>','prudent cautious protect protection safe safety risk defend'],
+    sun:['Sun','<circle cx="16" cy="16" r="6"/><path d="M16 2v3m0 22v3M2 16h3m22 0h3M6 6l2 2m16 16 2 2M6 26l2-2M24 8l2-2"/>','lucid clear clarity light bright daylight understand'],
+    mountain:['Mountain','<path d="M2 27 13 5l6 12 4-7 7 17Zm7-14 4 3 4-3"/>','tenacious persistent determined climb mountain difficulty challenge endure'],
+    tool:['Multipurpose tool','<rect x="10" y="12" width="12" height="17" rx="6"/><path d="M13 12V3h3v9m3 0 5-8 3 2-6 9M10 17 4 11l-2 2 8 8"/><circle cx="16" cy="24" r="1"/>','versatile flexibility flexible tool uses activities'],
+    heart:['Heart','<path d="M16 28 5 17C-2 9 8 1 16 10 24 1 34 9 27 17Z"/>','love loving kindness kind compassion care affection heart'],
+    book:['Book','<path d="M16 8C12 5 7 4 3 5v21c4-1 9 0 13 3 4-3 9-4 13-3V5c-4-1-9 0-13 3v21M7 11l5 1m-5 5 5 1m8-6 5-1m-5 7 5-1"/>','book read reading learn study knowledge wisdom teach'],
+    water:['Water','<path d="M16 3S6 15 6 21a10 10 0 0 0 20 0C26 15 16 3 16 3ZM11 21c0 3 2 5 5 5"/>','water rain river ocean wet liquid drink flow'],
+    leaf:['Leaf','<path d="M6 26C-2 10 13 3 28 4c0 15-7 30-22 22ZM6 26 23 9m-11 11v-7m0 7h7"/>','leaf tree forest green nature natural environment'],
+    bird:['Bird','<path d="M3 22c10 1 5-13 15-13a6 6 0 0 1 6 5l6 3-6 2c-3 9-13 11-21 3Zm8-2 6-4"/><circle cx="20" cy="13" r=".8"/>','bird fly flight free freedom liberty soar'],
+    clock:['Clock','<circle cx="16" cy="16" r="12"/><path d="M16 8v8l5 3"/>','time timely patience patient wait delay duration moment'],
+    balance:['Balance','<path d="M16 4v24M7 28h18M4 9h24M8 9l-5 11h10Zm16 0-5 11h10ZM3 20c2 4 8 4 10 0m6 0c2 4 8 4 10 0"/>','balance fair fairness equal equality justice judgment decision'],
+    bridge:['Bridge','<path d="M2 26h28M5 26V9m22 17V9M5 12c6 10 16 10 22 0M10 18v8m6-6v6m6-8v8"/>','bridge connect connection unite together bond relationship'],
+    speech:['Speech bubble','<path d="M5 5h22v17H14l-8 6v-6H5ZM10 11h12m-12 5h8"/>','speak speech talk conversation communicate express explain language word'],
+    compass:['Compass','<circle cx="16" cy="16" r="12"/><path d="m21 11-3 7-7 3 3-7Zm-7 3 4 4"/>','direction navigate journey travel guide explore discover'],
+    spark:['Spark','<path d="m16 3 3 10 10 3-10 3-3 10-3-10-10-3 10-3Z"/>','idea create creative inspiration imagine special unique wonder'],
+    hand:['Helping hand','<path d="M3 19h6l5-4h6c4 0 4 4 0 4h-6m7 0 6-4c3-2 5 1 2 4l-9 8H9l-6-2Zm0-1v7"/>','help helpful generous give gift support serve share'],
+    bolt:['Lightning','<path d="m18 2-13 17h10l-1 11 13-18H17Z"/>','energy energetic power fast quick sudden swift electric'],
+    home:['Home','<path d="m3 14 13-11 13 11M6 12v17h20V12M13 29V19h6v10"/>','home house shelter belonging family domestic'],
+    lock:['Lock','<rect x="6" y="13" width="20" height="16" rx="3"/><path d="M10 13V8a6 6 0 0 1 12 0v5m-6 7v3"/>','secret privacy private secure security trust confidential'],
+    cloud:['Cloud','<path d="M8 25a6 6 0 0 1-1-12 9 9 0 0 1 17-2 7 7 0 0 1 0 14Z"/>','calm peaceful peace quiet gentle soft tranquil rest']
+  };
+  function cueKey(w) {
+    if (Object.prototype.hasOwnProperty.call(cues, w.icon)) return w.icon;
+    const tokens = normalize(w.word).match(/[a-z]+/g) || [];
+    const meaning = normalize(w.meaning).match(/[a-z]+/g) || [];
+    let best = 'spark', score = 0;
+    Object.entries(cues).forEach(([key, cue]) => {
+      const keywords = cue[2].split(' ');
+      const match = tokens.reduce((n, t) => n + (keywords.includes(t) ? 10 : 0), 0) + meaning.reduce((n, t) => n + (keywords.includes(t) ? 1 : 0), 0);
+      if (match > score) { best = key; score = match; }
+    });
+    return best;
+  }
+  function memoryIcon(w) {
+    const cue = cues[cueKey(w)];
+    return '<svg class="vocab-memory-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Memory cue: '+cue[0]+'">'+cue[1]+'</svg>';
+  }
+  function iconPicker(w) {
+    return '<div class="vocab-cue-editor"><span id="vocabCuePreview">'+memoryIcon(w)+'</span><div><label for="vocabIcon">Memory cue</label><select id="vocabIcon" name="icon"><option value="">Automatic · from word and meaning</option>'+Object.entries(cues).map(([key,cue])=>'<option value="'+key+'"'+(w.icon===key?' selected':'')+'>'+cue[0]+'</option>').join('')+'</select></div></div>';
+  }
   const uid = () => window.crypto && crypto.randomUUID ? crypto.randomUUID() : 'v' + Date.now() + Math.random().toString(36).slice(2);
   function day(offset) { const d = new Date(); d.setDate(d.getDate() + (offset || 0)); return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
   let items = [], storageError = '', blockedStore = false;
@@ -3973,7 +4084,7 @@ window.MOLLI_DATA = {
   let view = 'home', editing = null, session = null, sourceFilter = null;
   const ready = () => items.filter(w => w.meaning.trim() && (!sourceFilter || w.sourceNoteId === sourceFilter));
   const button = (label,action,primary) => '<button type="button" class="vocab-button'+(primary?' primary':'')+'" data-action="'+action+'">'+label+'</button>';
-  const wordButton = w => '<button type="button" class="vocab-word" data-word="'+esc(w.id)+'" aria-label="Pronunciation and synonyms for '+esc(w.word)+'">'+esc(w.word)+'</button>';
+  const wordButton = w => '<button type="button" class="vocab-word" data-word="'+esc(w.id)+'" aria-label="Pronunciation and synonyms for '+esc(w.word)+'">'+memoryIcon(w)+'<span>'+esc(w.word)+'</span></button>';
   function revealPanel() {
     if (!notes.prepareVocabulary()) return false;
     panel.hidden = false;
@@ -4013,7 +4124,7 @@ window.MOLLI_DATA = {
   }
   function editor() {
     return header('Keep a word.','Save the meaning you want to practice.',button('← My words','words'))+
-      '<form class="vocab-form" id="vocabForm"><label for="vocabWord">Word</label><input id="vocabWord" name="word" maxlength="80" required value="'+esc(editing.word)+'"><label for="vocabMeaning">Meaning</label><textarea id="vocabMeaning" name="meaning" maxlength="500" required placeholder="A short definition in your own words">'+esc(editing.meaning)+'</textarea><label for="vocabContext">Example sentence <small>· optional</small></label><textarea id="vocabContext" name="context" maxlength="2000" placeholder="Include the word in a sentence">'+esc(editing.context)+'</textarea><label for="vocabSynonyms">Synonyms <small>· optional, separated by commas</small></label><input id="vocabSynonyms" name="synonyms" maxlength="300" value="'+esc((editing.synonyms||[]).join(', '))+'"><p class="vocab-notice">'+(editing.sourceTitle?'From: '+esc(editing.sourceTitle)+' · ':'')+'Saved meanings work offline. Synonym lookup needs internet when not cached.</p><p id="vocabFormError" class="vocab-error" role="alert"></p><div class="vocab-actions"><button type="submit" class="vocab-button primary">Save word</button>'+button('Cancel','words')+'</div></form>';
+      '<form class="vocab-form" id="vocabForm"><label for="vocabWord">Word</label><input id="vocabWord" name="word" maxlength="80" required value="'+esc(editing.word)+'"><label for="vocabMeaning">Meaning</label><textarea id="vocabMeaning" name="meaning" maxlength="500" required placeholder="A short definition in your own words">'+esc(editing.meaning)+'</textarea>'+iconPicker(editing)+'<label for="vocabContext">Example sentence <small>· optional</small></label><textarea id="vocabContext" name="context" maxlength="2000" placeholder="Include the word in a sentence">'+esc(editing.context)+'</textarea><label for="vocabSynonyms">Synonyms <small>· optional, separated by commas</small></label><input id="vocabSynonyms" name="synonyms" maxlength="300" value="'+esc((editing.synonyms||[]).join(', '))+'"><p class="vocab-notice">'+(editing.sourceTitle?'From: '+esc(editing.sourceTitle)+' · ':'')+'Saved meanings work offline. Synonym lookup needs internet when not cached.</p><p id="vocabFormError" class="vocab-error" role="alert"></p><div class="vocab-actions"><button type="submit" class="vocab-button primary">Save word</button>'+button('Cancel','words')+'</div></form>';
   }
   function shuffled(list) { const result=list.slice(); for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]];}return result; }
   function blankSentence(w) {
@@ -4043,7 +4154,7 @@ window.MOLLI_DATA = {
   function quiz() {
     const q=session.questions[session.index],w=items.find(w=>w.id===q.id),answered=!!q.result;
     let html=button('← Vocabulary','home')+'<div class="vocab-quiz"><div class="vocab-row"><p class="eyebrow">'+({match:'Meaning match',gap:'Sentence gaps',recall:'Word recall'}[q.kind])+'</p><span class="vocab-muted">'+(session.index+1)+' of '+session.questions.length+' · Untimed</span></div><progress class="vocab-progress" max="'+session.questions.length+'" value="'+session.index+'" aria-label="Practice progress"></progress><div class="vocab-card">';
-    html+='<p class="vocab-muted">'+(q.kind==='match'?'Which meaning fits this word?':q.kind==='gap'?'Restore the saved word.':'Which saved word has this meaning?')+'</p><div class="vocab-prompt">'+(q.kind==='match'?wordButton(w):esc(q.kind==='gap'?q.sentence:q.meaning))+'</div>';
+    html+='<p class="vocab-muted">'+(q.kind==='match'?'Which meaning fits this word?':q.kind==='gap'?'Restore the saved word.':'Which saved word has this meaning?')+'</p><div class="vocab-prompt">'+(q.kind==='match'?wordButton(w):memoryIcon(w)+'<span>'+esc(q.kind==='gap'?q.sentence:q.meaning)+'</span>')+'</div>';
     if(q.kind==='match')html+='<div class="vocab-options">'+q.options.map(o=>'<button type="button" class="vocab-button'+(answered&&o.id===q.id?' correct':answered&&o.id===q.result.answer?' incorrect':'')+'" data-answer="'+esc(o.id)+'" '+(answered?'disabled':'')+'>'+esc(o.meaning)+(answered&&o.id===q.id?' ✓':'')+'</button>').join('')+'</div>';
     else html+='<form id="vocabAnswerForm"><label for="vocabAnswer" class="vocab-answer-label">Type the saved word</label><input id="vocabAnswer" class="vocab-answer" autocomplete="off" autocapitalize="none" spellcheck="false" '+(answered?'disabled value="'+esc(q.result.answer)+'"':'')+'><div class="vocab-actions" style="margin-top:14px">'+(!answered?'<button type="submit" class="vocab-button primary">Check answer</button>'+button('First-letter hint','hint'):'')+'</div></form>';
     html+='<p class="vocab-hint" id="vocabHint" aria-live="polite">'+(q.assisted?'Hint used · this word will return sooner.':'')+'</p>';
@@ -4093,12 +4204,19 @@ window.MOLLI_DATA = {
     else return;
     notes.closePopover();render();
   });
+  function updateCuePreview(event) {
+    if (!['vocabWord','vocabMeaning','vocabIcon'].includes(event.target.id)) return;
+    const form = document.getElementById('vocabForm');
+    document.getElementById('vocabCuePreview').innerHTML = memoryIcon({word:form.elements.word.value,meaning:form.elements.meaning.value,icon:form.elements.icon.value});
+  }
+  panel.addEventListener('input', updateCuePreview);
+  panel.addEventListener('change', updateCuePreview);
   panel.addEventListener('submit',event=>{
     event.preventDefault();
     if(event.target.id==='vocabAnswerForm'){const answer=document.getElementById('vocabAnswer').value.trim();if(answer)grade(answer,false);else{document.getElementById('vocabHint').textContent='Type a word, or choose I’m not sure.';document.getElementById('vocabAnswer').focus();}return;}
     if(event.target.id!=='vocabForm')return;
     const form=event.target;
-    const changed=Object.assign({},editing,{word:form.elements.word.value.trim(),meaning:form.elements.meaning.value.trim(),context:form.elements.context.value.trim(),synonyms:form.elements.synonyms.value.split(',').map(s=>s.trim()).filter(Boolean)});
+    const changed=Object.assign({},editing,{icon:form.elements.icon.value,word:form.elements.word.value.trim(),meaning:form.elements.meaning.value.trim(),context:form.elements.context.value.trim(),synonyms:form.elements.synonyms.value.split(',').map(s=>s.trim()).filter(Boolean)});
     if(!changed.word||!changed.meaning){document.getElementById('vocabFormError').textContent='Add both a word and its meaning.';return;}
     const duplicate=items.find(w=>w.id!==changed.id&&normalize(w.word)===normalize(changed.word)&&normalize(w.meaning)===normalize(changed.meaning));
     if(duplicate){document.getElementById('vocabFormError').textContent='This word and meaning are already in your collection.';return;}
@@ -4118,6 +4236,188 @@ window.MOLLI_DATA = {
   document.getElementById('navVocabulary').addEventListener('click',()=>open());
   document.getElementById('noteVocabulary').addEventListener('click',()=>{const note=notes.activeNote();open(note&&note.id);});
   window.AGVocabulary={open,hide,capture};
+})();
+
+</script>
+  <script>
+/* Integer and rational arithmetic keeps generated answers unambiguous. */
+(function (root) {
+  'use strict';
+  const names = {arithmetic:'Mental arithmetic',percentages:'Percentages',fractions:'Fraction comparison',estimation:'Estimation'};
+  function generate(kind, level, random = Math.random) {
+    const pick = values => values[Math.floor(random() * values.length)];
+    const int = (min, max) => min + Math.floor(random() * (max - min + 1));
+    const stretch = level === 'stretch';
+    if (kind === 'arithmetic') {
+      const op = pick(['+', '−', '×', '÷']);
+      let a = int(stretch ? 25 : 2, stretch ? 150 : 30), b = int(2, stretch ? 24 : 12);
+      if (op === '−' && a < b) [a,b] = [b,a];
+      if (op === '×') { a = int(2,stretch ? 24 : 12); }
+      if (op === '÷') { a = b * int(2,stretch ? 24 : 12); }
+      const answer = op === '+' ? a+b : op === '−' ? a-b : op === '×' ? a*b : a/b;
+      const tens=b-b%10, ones=b%10, half=Math.floor(a/2);
+      const explanation = op === '÷' ? `${b} × ${answer} = ${a}, so ${a} ÷ ${b} = ${answer}.` : op === '×' ? `Split ${a} into ${half} and ${a-half}: ${half} × ${b} = ${half*b}; ${a-half} × ${b} = ${(a-half)*b}. Add the two products to get ${answer}.` : tens ? `First, ${a} ${op} ${tens} = ${op==='+'?a+tens:a-tens}. Then ${op==='+'?'add':'subtract'} ${ones} to get ${answer}.` : `Start at ${a} and count ${op==='+'?'forward':'backward'} ${b} to reach ${answer}.`;
+      return {kind,prompt:`${a} ${op} ${b}`,answer,explanation,hint:op==='÷'?'Think of the multiplication that gives this total.':'Split a number into tens and ones.',label:'Enter the answer'};
+    }
+    if (kind === 'percentages') {
+      const percent = pick(stretch ? [5,15,25,35,45,75] : [10,20,25,50]);
+      const amount = int(2,stretch ? 30 : 12)*20, part = amount*percent/100;
+      const discount = random() < .5;
+      const answer = discount ? amount-part : part;
+      return {kind,prompt:discount ? `${percent}% off $${amount}. What is the sale price?` : `What is ${percent}% of ${amount}?`,answer,explanation:`1% of ${amount} is ${amount/100}. Multiply by ${percent} to get ${part}.`+(discount ? ` Subtract the discount: ${amount} − ${part} = ${answer}.` : ''),hint:discount?'Find the percentage amount first, then subtract it from the price.':'Find 10% by dividing by 10, or 1% by dividing by 100.',label:discount?'Sale price in dollars':'Enter the answer'};
+    }
+    if (kind === 'fractions') {
+      const b = pick(stretch ? [7,8,9,12,16] : [2,3,4,5,6]), d = pick(stretch ? [7,8,9,12,16] : [2,3,4,5,6]);
+      const a = int(1,b-1), equivalent = random() < .2;
+      const c = equivalent ? a*2 : int(1,d-1), denominator = equivalent ? b*2 : d;
+      const left = a*denominator, right = c*b;
+      const answer = left === right ? 'equal' : left > right ? 'left' : 'right';
+      return {kind,prompt:`${a}/${b}  or  ${c}/${denominator}`,answer,options:[['left',`${a}/${b} is greater`],['equal','They are equal'],['right',`${c}/${denominator} is greater`]],explanation:`Compare cross-products: ${a} × ${denominator} = ${left}; ${c} × ${b} = ${right}. `+(answer==='equal'?'The fractions are equal.':`${answer==='left'?a+'/'+b:c+'/'+denominator} is greater because its cross-product is larger.`),hint:'Multiply each numerator by the other denominator. Compare the two products.',label:'Which fraction is greater?'};
+    }
+    if (kind === 'estimation') {
+      const terms = Array.from({length:stretch ? 3 : 2},()=>int(stretch ? 40 : 15,stretch ? 180 : 95));
+      const total = terms.reduce((a,b)=>a+b,0), answer = Math.round(total/10)*10;
+      return {kind,prompt:terms.join(' + '),answer,total,tolerance:10,min:0,max:stretch ? 600 : 200,step:10,label:'Estimate the sum · within 10 of the exact total',explanation:`The exact sum is ${total}. The nearest ten is ${answer}; estimates within 10 of ${total} count as correct.`,hint:'Round each number to the nearest ten, then add. Adjust if both rounded in the same direction.'};
+    }
+    throw new Error('Unknown exercise: '+kind);
+  }
+  function parseNumber(value) {
+    const text = String(value).trim();
+    if (!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(text)) return null;
+    const number = Number(text);
+    return Number.isFinite(number) ? number : null;
+  }
+  function grade(q,value) {
+    if (q.kind==='fractions') return value===q.answer;
+    const number=parseNumber(value);
+    return number!==null && (q.kind==='estimation' ? Math.abs(number-q.total)<=q.tolerance : Math.abs(number-q.answer)<1e-9);
+  }
+  const api={names,generate,parseNumber,grade};
+  if (typeof module !== 'undefined' && module.exports) module.exports=api;
+  else root.AGMathEngine=api;
+})(typeof window === 'undefined' ? {} : window);
+
+</script>
+  <script>
+/* Five-question, untimed math practice. No dependencies or network requests. */
+(function () {
+  'use strict';
+  const engine=window.AGMathEngine, notes=window.AGNotes;
+  if (!engine || !notes) return;
+  const panel=document.getElementById('mathPanel'), KEY='molli.math.v1';
+  const esc=value=>String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const topics=Object.keys(engine.names);
+  const descriptions={arithmetic:'Add, subtract, multiply, and divide in small steps.',percentages:'Find a percentage or work out a sale price.',fractions:'Compare two fractions, including equivalent pairs.',estimation:'Estimate a sum using a simple number line.'};
+  const drawings={arithmetic:'<path d="M4 9h10M9 4v10m10-5h10M5 21l8 8m0-8-8 8m15-6h10m-10 5h10"/>',percentages:'<path d="m7 27 18-22"/><circle cx="8" cy="8" r="4"/><circle cx="24" cy="24" r="4"/>',fractions:'<circle cx="16" cy="16" r="12"/><path d="M16 4v12h12m-12 0-8 9"/>',estimation:'<path d="M3 20h26M5 16v8m7-6v4m7-6v8m8-6v4m-8-13v5m-3-3h6"/>'};
+  const icon=kind=>'<svg class="math-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+drawings[kind]+'</svg>';
+  const button=(label,action,primary=false)=>'<button type="button" class="math-button'+(primary?' primary':'')+'" data-action="'+action+'">'+label+'</button>';
+  let stats={attempts:0,correct:0,unaided:0,rounds:0}, level='everyday', session=null, view='home', notice='', blocked=false;
+  try {
+    const raw=localStorage.getItem(KEY);
+    if (raw) {
+      const saved=JSON.parse(raw);
+      if (saved.version!==1 || !saved.stats || !['attempts','correct','unaided','rounds'].every(k=>Number.isSafeInteger(saved.stats[k])&&saved.stats[k]>=0) || saved.stats.unaided>saved.stats.correct || saved.stats.correct>saved.stats.attempts) throw new Error('Invalid progress');
+      stats=saved.stats;
+      level=saved.level==='stretch'?'stretch':'everyday';
+    }
+  } catch(e) { blocked=true;notice='Saved math progress could not be read. You can still practice; the saved data will stay unchanged.'; }
+  function save() {
+    if (blocked) return;
+    try { localStorage.setItem(KEY,JSON.stringify({version:1,stats,level}));notice=''; }
+    catch(e) { notice='This round still works, but progress could not be saved on this device.'; }
+  }
+  function open() {
+    if (!notes.prepareVocabulary('math')) return;
+    session=null;view='home';panel.hidden=false;
+    history.replaceState(null,'',location.pathname+location.search+'#math');
+    render();window.scrollTo({top:0});
+  }
+  function hide() {
+    panel.hidden=true;
+    if(location.hash==='#math')history.replaceState(null,'',location.pathname+location.search);
+  }
+  function home() {
+    return '<div class="math-header"><div><p class="eyebrow">A LITTLE PRACTICE WITH NUMBERS</p><h1>Make room for math.</h1><p class="math-muted">Small problems. Clear steps. At your pace.</p></div></div>'+
+      '<div class="math-deck math-start"><div><h2>One small round.</h2><p class="math-muted">5 questions · a mix of everyday math · untimed</p></div>'+button('Start a mixed round →','start-mix',true)+'</div>'+
+      '<div class="math-settings"><label for="mathLevel">Difficulty</label><select id="mathLevel"><option value="everyday"'+(level==='everyday'?' selected':'')+'>Everyday</option><option value="stretch"'+(level==='stretch'?' selected':'')+'>A little stretch</option></select><span class="math-muted">'+(level==='stretch'?'Larger numbers and less familiar percentages.':'Smaller numbers and familiar percentages.')+'</span></div>'+
+      '<h2>Choose your practice</h2><div class="math-games">'+topics.map(kind=>'<button type="button" class="math-deck math-game" data-action="start-'+kind+'">'+icon(kind)+'<strong>'+engine.names[kind]+'</strong><span>'+descriptions[kind]+'</span><span>Practice →</span></button>').join('')+'</div>'+
+      '<div class="math-stats" aria-label="Saved math progress"><div><strong>'+stats.rounds+'</strong><span>rounds completed</span></div><div><strong>'+stats.attempts+'</strong><span>questions practiced</span></div><div><strong>'+stats.unaided+'</strong><span>correct without hints</span></div></div><p class="math-muted">Hints welcome · No timer · Progress saved on this device</p>';
+  }
+  function start(mode) {
+    let kinds=mode==='mix'?topics.slice():Array(5).fill(mode);
+    if(mode==='mix') for(let i=kinds.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [kinds[i],kinds[j]]=[kinds[j],kinds[i]]; }
+    if (mode==='mix') kinds.push(topics[Math.floor(Math.random()*topics.length)]);
+    session={mode,questions:kinds.map(kind=>Object.assign(engine.generate(kind,level),{assisted:false,result:null,draft:null})),index:0};
+    view='quiz';render();window.scrollTo({top:0});
+  }
+  function quiz() {
+    const q=session.questions[session.index], answered=!!q.result;
+    let html=button('← Math','home')+'<div class="math-session"><div class="math-header"><p class="eyebrow">'+engine.names[q.kind]+'</p><span class="math-muted">'+(session.index+1)+' of 5 · '+(level==='stretch'?'A little stretch':'Everyday')+'</span></div><progress class="math-progress" value="'+(session.index+(answered?1:0))+'" max="5" aria-label="Math round progress"></progress><div class="math-deck">'+icon(q.kind)+'<h1 class="math-prompt" id="mathPrompt">'+esc(q.prompt)+'</h1>';
+    if (q.options) html+='<p class="math-answer-label">'+q.label+'</p><div class="math-options">'+q.options.map(([value,label])=>'<button type="button" class="math-button" data-answer="'+value+'" '+(answered?'disabled':'')+'>'+esc(label)+(answered&&value===q.answer?' ✓':'')+'</button>').join('')+'</div>';
+    else {
+      html+='<form id="mathAnswerForm"><label class="math-answer-label" for="mathAnswer">'+q.label+'</label>';
+      if (q.kind==='estimation') {
+        const estimate=q.draft===null?q.max/2:q.draft;
+        html+='<output class="math-estimate-value" id="mathEstimateValue" for="mathAnswer">'+esc(estimate)+'</output><input id="mathAnswer" class="math-estimate" type="range" min="'+q.min+'" max="'+q.max+'" step="'+q.step+'" value="'+esc(estimate)+'" '+(answered?'disabled':'')+' aria-describedby="mathPrompt"><div class="math-range"><span>'+q.min+'</span><span>'+q.max+'</span></div>';
+      } else html+='<input class="math-answer" id="mathAnswer" type="text" inputmode="decimal" autocomplete="off" maxlength="30" value="'+esc(q.draft||'')+'" '+(answered?'disabled':'')+' aria-describedby="mathPrompt">';
+      if (!answered) html+='<div class="math-actions"><button type="submit" class="math-button primary">'+(q.kind==='estimation'?'Check estimate':'Check answer')+'</button></div>';
+      html+='</form>';
+    }
+    if (!answered) html+='<div class="math-actions">'+button('Show a hint','hint')+button('I’m not sure','skip')+'</div><p class="math-hint" aria-live="polite">'+(q.assisted?esc(q.hint)+' · Counts as practice with help.':'')+'</p><p id="mathAnswerError" class="math-error" role="alert"></p>';
+    else html+='<section class="math-feedback" aria-live="polite"><h2>'+(q.result.skipped?'Let’s work through it.':q.result.correct?(q.assisted?'That’s right, with a hint.':'That’s right.'):'Let’s try these steps.')+'</h2><p>'+esc(q.explanation)+'</p><div class="math-actions">'+button(session.index===4?'See summary →':'Next question →','next',true)+'</div></section>';
+    return html+'</div></div>';
+  }
+  function summary() {
+    const questions=session.questions, correct=questions.filter(q=>q.result.correct).length, unaided=questions.filter(q=>q.result.correct&&!q.assisted).length;
+    return '<div class="math-header"><div><p class="eyebrow">ONE SMALL ROUND, FINISHED</p><h1>A little more confidence.</h1><p class="math-muted">'+correct+' of 5 correct · '+unaided+' without hints</p></div></div><div class="math-actions">'+button('Another round →','again',true)+button('Back to Math','home')+'</div><div class="math-review">'+questions.map(q=>'<article><p class="eyebrow">'+engine.names[q.kind]+' · '+(q.result.correct?(q.assisted?'With a hint':'Without hints'):q.result.skipped?'Reviewed together':'Needs another look')+'</p><h2>'+esc(q.prompt)+'</h2><p class="math-muted">'+esc(q.explanation)+'</p></article>').join('')+'</div>';
+  }
+  function render() {
+    panel.innerHTML=(notice?'<p class="math-error" role="status">'+esc(notice)+'</p>':'')+(view==='home'?home():view==='quiz'?quiz():summary());
+  }
+  function grade(value,skipped=false) {
+    const q=session.questions[session.index];
+    if (q.result) return;
+    if (!skipped && !q.options && engine.parseNumber(value)===null) {
+      document.getElementById('mathAnswerError').textContent='Enter a number, such as 12 or 12.5.';return;
+    }
+    q.result={correct:!skipped&&engine.grade(q,value),skipped};
+    stats.attempts++;
+    if(q.result.correct) { stats.correct++;if(!q.assisted)stats.unaided++; }
+    if(session.index===4) stats.rounds++;
+    save();render();
+    panel.querySelector('[data-action="next"]').focus({preventScroll:true});
+  }
+  panel.addEventListener('click',event=>{
+    const b=event.target.closest('button');if(!b||b.disabled)return;
+    if (b.dataset.answer) { grade(b.dataset.answer);return; }
+    const action=b.dataset.action;
+    if (!action) return;
+    if (action.startsWith('start-')) { start(action.slice(6));return; }
+    if (action==='home') { view='home';session=null;render();window.scrollTo({top:0}); }
+    else if (action==='again') start(session.mode);
+    else if (action==='hint') { session.questions[session.index].assisted=true;render(); }
+    else if (action==='skip') grade('',true);
+    else if (action==='next') {
+      if(!session.questions[session.index].result)return;
+      if(session.index===4)view='summary';else session.index++;
+      render();window.scrollTo({top:0});
+    }
+  });
+  panel.addEventListener('input',event=>{
+    if(event.target.id!=='mathAnswer'||!session)return;
+    session.questions[session.index].draft=event.target.value;
+    const output=document.getElementById('mathEstimateValue');if(output)output.value=event.target.value;
+  });
+  panel.addEventListener('change',event=>{
+    if(event.target.id!=='mathLevel')return;
+    level=event.target.value;save();render();
+  });
+  panel.addEventListener('submit',event=>{
+    event.preventDefault();if(event.target.id==='mathAnswerForm')grade(document.getElementById('mathAnswer').value);
+  });
+  document.getElementById('navMath').addEventListener('click',open);
+  window.AGMath={open,hide};
+  if(location.hash==='#math')open();
 })();
 
 </script>
